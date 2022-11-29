@@ -25,6 +25,14 @@ def insert(fio, pol, age, tel, mail, group, well):
     except Exception as e:
         return f"Ошибка при добавлении нового студента {e}"
     print("Данные добавлены")
+# Удалить
+def drop_by_arg(val, col_name="номер"):
+    global csv_file
+    try:
+        csv_file = list(filter(lambda x: x[col_name] != val, csv_file))
+    except Exception as e:
+        return f"Строка со значением {val} поля {col_name} не найдена"
+    return f"Строка со значением {val} поля {col_name} удалена"
 
 # Сохранить в файл
 def save(fine_name):
