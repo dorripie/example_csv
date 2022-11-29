@@ -33,7 +33,12 @@ def drop_by_arg(val, col_name="номер"):
     except Exception as e:
         return f"Строка со значением {val} поля {col_name} не найдена"
     return f"Строка со значением {val} поля {col_name} удалена"
-
+# Поиск по ФИО студента
+def find(val, col_name='ФИО'):
+    print(*list(filter(lambda x: x[col_name] == val, csv_file)))
+# Вывод ФИО студентов из указанной группы
+def students_fullnames_by_group(group):
+    print(*list(map(lambda row: row["ФИО"],[row for row in csv_file if row ["группа"] == group])))
 # Сохранить в файл
 def save(fine_name):
     with open(fine_name, 'w', encoding='utf-8', newline='') as file:
